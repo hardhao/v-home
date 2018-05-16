@@ -13,8 +13,17 @@
 
 <script>
 import axios from 'axios'
+import {API_ULR} from '../constants/ApiConstants'
 export default {
   name: 'BlogHome',
+  created(){
+    console.log('拿目录')
+    const uri = `${API_URL}/posts/index.json`
+    axios.get(uri).then(res =>{
+      console.log('我的目录',res.data)
+      this.posts = res.data
+    })
+  },
   computed:{
     posts(){
       return this.$store.state.blog.all
