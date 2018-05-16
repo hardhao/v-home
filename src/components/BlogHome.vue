@@ -13,9 +13,12 @@
 
 <script>
 import axios from 'axios'
-import {API_ULR} from '../constants/ApiConstants'
+import {API_URL} from '../constants/ApiConstants.js'
 export default {
   name: 'BlogHome',
+  data:() => ({
+    posts:[]
+  }),
   created(){
     console.log('拿目录')
     const uri = `${API_URL}/posts/index.json`
@@ -23,13 +26,7 @@ export default {
       console.log('我的目录',res.data)
       this.posts = res.data
     })
-  },
-  computed:{
-    posts(){
-      return this.$store.state.blog.all
-    }
   }
-
 }
 </script>
 
